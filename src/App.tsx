@@ -6,6 +6,7 @@ function App() {
   const [countClick, setCountClick] = useState(1)
   const [iconBoxes, setIconBoxes] = useState(Array.from({ length: 9 }, () => ''))
 
+  // handle clicked
   const handleClick = (index: number) => {
     if (!iconBoxes[index] && countClick % 2 === 0) {
       iconBoxes[index] = 'circle'
