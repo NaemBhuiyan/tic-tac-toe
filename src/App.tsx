@@ -1,38 +1,45 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import Circle from './component/icon/Circle'
+import { useState } from "react";
+import "./App.css";
+import Circle from "./component/icon/Circle";
 
 function App() {
-  const [iconState, setIconState] = useState(Array.from({ length: 9 }, () => ''))
+  const [countClick, setCountClick] = useState(1);
+  const [iconBoxes, setIconBoxes] = useState(
+    Array.from({ length: 9 }, () => "")
+  );
 
   const handleClick = (index: number) => {
-    console.log('clicked')
-
-    if (index % 2 === 0) {
-      iconState[index] = 'circle'
+    if (countClick % 2 === 0) {
+      if (!iconBoxes[index]) {
+        iconBoxes[index] = "circle";
+        setCountClick((pre) => pre + 1);
+      }
     } else {
-      iconState[index] = 'cross'
+      if (!iconBoxes[index]) {
+        iconBoxes[index] = "cross";
+        setCountClick((pre) => pre + 1);
+      }
     }
-    setIconState([...iconState])
-  }
-  console.log(iconState)
+    setIconBoxes([...iconBoxes]);
+  };
 
   return (
     <div className='App'>
       <header className='App-header'>
-        {iconState.map((box, index) => (
+        {iconBoxes.map((box, index) => (
           <div
             key={index}
             className='box'
-            onClick={() => !iconState.every((item) => !!item) && handleClick(index)}
+            onClick={() =>
+              !iconBoxes.every((item) => !!item) && handleClick(index)
+            }
           >
             <Circle idx={index} icon={box} />
           </div>
         ))}
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
