@@ -1,11 +1,10 @@
 import React from 'react'
 
 type Prop = {
-  idx: number
   icon: string
 }
 
-const Circle = ({ idx, icon }: Prop) => {
+const Circle = ({ icon }: Prop) => {
   if (icon == 'circle') {
     return <img className='icon' src={require('../../assets/image/circle.png')} alt='' />
   }

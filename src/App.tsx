@@ -7,16 +7,13 @@ function App() {
   const [iconBoxes, setIconBoxes] = useState(Array.from({ length: 9 }, () => ''))
 
   const handleClick = (index: number) => {
-    if (countClick % 2 === 0) {
-      if (!iconBoxes[index]) {
-        iconBoxes[index] = 'circle'
-        setCountClick((pre) => pre + 1)
-      }
-    } else {
-      if (!iconBoxes[index]) {
-        iconBoxes[index] = 'cross'
-        setCountClick((pre) => pre + 1)
-      }
+    if (!iconBoxes[index] && countClick % 2 === 0) {
+      iconBoxes[index] = 'circle'
+      setCountClick((pre) => pre + 1)
+    }
+    if (!iconBoxes[index] && countClick % 2 !== 0) {
+      iconBoxes[index] = 'cross'
+      setCountClick((pre) => pre + 1)
     }
     setIconBoxes([...iconBoxes])
   }
@@ -30,7 +27,7 @@ function App() {
             className='box'
             onClick={() => !iconBoxes.every((item) => !!item) && handleClick(index)}
           >
-            <Circle idx={index} icon={box} />
+            <Circle icon={box} />
           </div>
         ))}
       </header>
