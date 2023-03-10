@@ -1,19 +1,18 @@
-import circleIcon from "../../assets/image/circle.png";
-import closeIcon from "../../assets/image/close.png";
+import React from 'react'
 
 type Prop = {
-  idx: number;
-  icon: string;
-};
+  idx: number
+  icon: string
+}
 
 const Circle = ({ idx, icon }: Prop) => {
-  if (icon == "circle") {
-    return <img className='icon' src={circleIcon} alt='' />;
+  if (icon == 'circle') {
+    return <img className='icon' src={require('../../assets/image/circle.png')} alt='' />
   }
-  if (icon == "cross") {
-    return <img className='icon' src={closeIcon} alt='' />;
+  if (icon == 'cross') {
+    return <img className='icon' src={require('../../assets/image/close.png')} alt='' />
   }
-  return null;
-};
+  return null
+}
 
-export default Circle;
+export default Circle
